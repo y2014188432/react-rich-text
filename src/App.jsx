@@ -1,24 +1,29 @@
-import React, { useRef } from "react";
-import QuilluQ from "./page/demo1";
+import React, { useRef,useEffect } from "react";
+import Quill from "./page/demo1";
 import "quill/dist/quill.snow.css";
 import "./App.css";
 import "antd/dist/antd.css";
 function App() {
+
+  useEffect(() => {
+    quillRef.current?.setContent('<p>请输入内容......</p>');
+  },[])
+
   const quillRef = useRef(null);
   return (<div className="App">
     <button onClick={() => {
-      console.info(quillRef);
-      console.log('<<<<< <<<<<<  华丽的分隔符');
+      // 富文本内容，以 HTML 标签存储、单行字符串、可直接渲染至页面
       console.info(quillRef.current?.getContent());
     }}>
-      getContent
+      获取富文本内信息
     </button>
     <button onClick={() => {
-      quillRef.current?.setContent('<p><img width="25%" style="display: inline; float: left; margin: 0px 1em 1em 0px;" src="https://t9.baidu.com/it/u=3725841446,2955765607&amp;fm=218&amp;app=92&amp;f=PNG?w=121&amp;h=75&amp;s=A50022F15C1338C000B59121030010C0" width="100%"></img></p><p>dasdsa</p><p style="padding-left:3em">sa</p><p style="padding-left:3em">d</p><p style="padding-left:3em">as</p><p style="padding-left:3em">das</p><p style="padding-left:3em">dasfgrsgfdgsfdg</p>');
+      quillRef.current?.setContent('<p>请输入内容......</p>');
     }}>
-      setContent
+      重置富文本信息
     </button>
-    <QuilluQ id="dasdsa" ref={quillRef}/>
+    {/* id 作用未知，但不可为空 */}
+    <Quill id="abc" ref={quillRef}/>
   </div>);
 }
 export default App;

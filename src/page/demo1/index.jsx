@@ -43,7 +43,7 @@ const QuilluQ = (props, ref) => {
     useImperativeHandle(ref, () => ({
         getContent: () => {
             const delta = quillRef.current.getContents();
-            console.info("delta", delta);
+            // console.info("delta", delta);
             const converter = new QuillDeltaToHtmlConverter(delta.ops, {
                 inlineStyles: true,
                 customTagAttributes: (op) => {
